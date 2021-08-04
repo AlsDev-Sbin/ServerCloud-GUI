@@ -18,6 +18,10 @@ C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\
 C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\obj\Debug\net6.0-windows\ServerCloud.csproj.CopyComplete
 C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\obj\Debug\net6.0-windows\ServerCloud.MainPastas.resources
-C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\obj\Debug\net6.0-windows\ServerCloud.teste.resources
 C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\obj\Debug\net6.0-windows\ServerCloud.Properties.Resources.resources
 C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\obj\Debug\net6.0-windows\ServerCloud.ViewButtonFolder.resources
+C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\obj\Debug\net6.0-windows\ServerCloud.ViewButtonFile.resources
+C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\bin\Debug\net6.0-windows\HtmlAgilityPack.dll
+C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\obj\Debug\net6.0-windows\ServerCloud.ViewNameFolder.resources
+C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\obj\Debug\net6.0-windows\ServerCloud.MainCreateAccount.resources
+C:\Users\AndreLuiz\Documents\Projetos\ServerCloud-GUI\ServerCloudC#\ServerCloud\bin\Debug\net6.0-windows\Geckofx-Core.dll

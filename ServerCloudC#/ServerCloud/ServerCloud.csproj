@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Geckofx-Core-45.0.36.02" Version="45.0.36" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.34" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
@@ -17,12 +19,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="ViewButtonFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ViewButtonFolder - Cópia.Designer.cs">
+      <DependentUpon>ViewButtonFolder.Designer.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ViewButtonFolder - Cópia.resx">
+      <DependentUpon>ViewButtonFolder.resx</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
 

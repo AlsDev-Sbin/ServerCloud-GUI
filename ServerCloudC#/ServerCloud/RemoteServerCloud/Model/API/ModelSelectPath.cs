@@ -5,5 +5,6 @@
 		public int IdUser { get; set; }
 		public int IdPath { get; set; }
 		public string Path { get; set; }
+		public int Parent { get; set; }
 	}
 }

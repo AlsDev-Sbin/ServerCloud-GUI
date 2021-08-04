@@ -1,17 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="MainCreateAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="MainLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="MainPastas.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="teste.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="ViewButtonFolder.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ViewNameFolder.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 </Project>

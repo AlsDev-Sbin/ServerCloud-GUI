@@ -9,7 +9,7 @@ namespace ServerCloud.RemoteServerCloud.API
 		{
 			Addr = Address;
 		}
-		protected override EnumEndPoints.EndPoint Addr { get;  set; }
+		protected override EnumEndPoints.EndPoint Addr { get; set; }
 
 		public void Dispose()
 		{

@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json;
-using ServerCloud.RemoteServerCloud.API;
+﻿using ServerCloud.RemoteServerCloud.API;
 using ServerCloud.RemoteServerCloud.Model;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ServerCloud
@@ -52,19 +50,31 @@ namespace ServerCloud
 
 				ProgressBarLogin.Value = 100;
 
-				TabMain.SelectedIndex = 1;
+				TabMain.SelectedIndex = 2;
 				return;
 			}
 
 			MessageBox.Show("Usuário ou senha incorreto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			ProgressBarLogin.Value = 0;
 		}
+		private void LinkCriarConta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			PnCreateAccount.Controls.Add(new MainCreateAccount());
+			TabMain.SelectedIndex = 1;
+		}
 
 		private void BtVoltar_Click(object sender, EventArgs e)
 		{
 			user = new();
 			TabMain.SelectedIndex = 0;
+			ProgressBarLogin.Value = 0;
 			PnPastas.Controls[0].Dispose();
+		}
+		private void BtVoltar2_Click(object sender, EventArgs e)
+		{
+			ProgressBarLogin.Value = 0;
+			TabMain.SelectedIndex = 0;
+			PnCreateAccount.Controls[0].Dispose();
 		}
 	}
 }

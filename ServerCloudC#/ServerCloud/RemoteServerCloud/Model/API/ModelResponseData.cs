@@ -27,6 +27,7 @@ namespace ServerCloud.RemoteServerCloud.Model
 	{
 		public int Id { get; set; }
 		public string? Path { get; set; }
+		public int Parent { get; set; }
 	}
 
 	public class user

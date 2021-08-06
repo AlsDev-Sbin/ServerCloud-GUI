@@ -72,7 +72,7 @@ namespace ServerCloud
 			this.BtGravar.Location = new System.Drawing.Point(12, 93);
 			this.BtGravar.Name = "BtGravar";
 			this.BtGravar.Size = new System.Drawing.Size(225, 36);
-			this.BtGravar.TabIndex = 3;
+			this.BtGravar.TabIndex = 1;
 			this.BtGravar.Text = "Gravar";
 			this.BtGravar.UseVisualStyleBackColor = true;
 			this.BtGravar.Click += new System.EventHandler(this.BtGravar_Click);
@@ -88,7 +88,7 @@ namespace ServerCloud
 			this.Controls.Add(this.TxNomePasta);
 			this.Font = new System.Drawing.Font("Lucida Sans Unicode", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+			this.Margin = new System.Windows.Forms.Padding(5);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "ViewNameFolder";

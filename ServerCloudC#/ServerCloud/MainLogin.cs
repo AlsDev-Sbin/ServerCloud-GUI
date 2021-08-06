@@ -40,11 +40,11 @@ namespace ServerCloud
 			ProgressBarLogin.PerformStep();
 			if (json == null || json.InformationRequest.ValueError == 200)
 			{
-
 				user = modeljson;
 				user.IdUser = json.data.First().user.First().Id;
 				user.PrimaryName = json.data.First().user.First().PrimaryName;
 				user.SecondName = json.data.First().user.First().SecondName;
+				user.Token = json.data.First().user.First().Token;
 
 				PnPastas.Controls.Add(new MainPastas(user) { Dock = DockStyle.Fill });
 
@@ -59,7 +59,7 @@ namespace ServerCloud
 		}
 		private void LinkCriarConta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			PnCreateAccount.Controls.Add(new MainCreateAccount());
+			PnCreateAccount.Controls.Add(new MainCreateAccount() { Dock = DockStyle.Fill });
 			TabMain.SelectedIndex = 1;
 		}
 

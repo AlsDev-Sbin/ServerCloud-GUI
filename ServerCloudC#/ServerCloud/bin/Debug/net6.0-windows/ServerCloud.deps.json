@@ -8,20 +8,11 @@
     ".NETCoreApp,Version=v6.0": {
       "ServerCloud/1.0.0": {
         "dependencies": {
-          "Geckofx-Core-45.0.36.02": "45.0.36",
           "HtmlAgilityPack": "1.11.34",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "ServerCloud.dll": {}
-        }
-      },
-      "Geckofx-Core-45.0.36.02/45.0.36": {
-        "runtime": {
-          "lib/net45/Geckofx-Core.dll": {
-            "assemblyVersion": "45.0.36.0",
-            "fileVersion": "45.0.36.0"
-          }
         }
       },
       "HtmlAgilityPack/1.11.34": {
@@ -47,13 +38,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "Geckofx-Core-45.0.36.02/45.0.36": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-d81HgKXxaisn1jtulLmvWJ0na9dzt0OyzgWjdrEsJTt9blJYT0BRvP9wR0YH5GXoQoT7P50wvwgslQ4tF/8JJg==",
-      "path": "geckofx-core-45.0.36.02/45.0.36",
-      "hashPath": "geckofx-core-45.0.36.02.45.0.36.nupkg.sha512"
     },
     "HtmlAgilityPack/1.11.34": {
       "type": "package",

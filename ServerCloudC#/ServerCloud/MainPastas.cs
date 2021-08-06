@@ -3,7 +3,6 @@ using ServerCloud.RemoteServerCloud.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,7 +24,7 @@ namespace ServerCloud
 			InitializeComponent();
 		}
 
-		public (string Path, int IdPath, int Parent) CurrentPath = ("", 0, 0);
+		public (string Path, int? IdPath, int? Parent) CurrentPath = ("", 0, 0);
 
 		private async void ProgressBar_VisibleChanged(object sender, EventArgs e)
 		{
@@ -169,7 +168,7 @@ namespace ServerCloud
 			});
 		}
 
-		public async void ClickFolder(int IdPath)
+		public async void ClickFolder(int? IdPath)
 		{
 			FlowContainerFolders.Controls.Clear();
 			CurrentPath = ("", 0, CurrentPath.Parent);
@@ -282,7 +281,7 @@ namespace ServerCloud
 					};
 
 					var api = new APIAnonFiles();
-					modelApi = await api.UploadFile(modelApi, file);
+					modelApi = await api.UploadFile(modelApi, file, User.Token);
 
 					if (modelApi.status)
 					{

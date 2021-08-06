@@ -203,8 +203,8 @@ namespace ServerCloud
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.PnCreateAccount.Location = new System.Drawing.Point(85, 73);
 			this.PnCreateAccount.Name = "PnCreateAccount";
-			this.PnCreateAccount.Padding = new System.Windows.Forms.Padding(150, 80, 150, 80);
-			this.PnCreateAccount.Size = new System.Drawing.Size(609, 378);
+			this.PnCreateAccount.Padding = new System.Windows.Forms.Padding(50, 0, 50, 0);
+			this.PnCreateAccount.Size = new System.Drawing.Size(609, 371);
 			this.PnCreateAccount.TabIndex = 4;
 			// 
 			// Btvoltar2
@@ -218,7 +218,7 @@ namespace ServerCloud
 			this.Btvoltar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(118)))), ((int)(((byte)(152)))));
 			this.Btvoltar2.ImageKey = "back_64px.png";
 			this.Btvoltar2.ImageList = this.Img;
-			this.Btvoltar2.Location = new System.Drawing.Point(4, 20);
+			this.Btvoltar2.Location = new System.Drawing.Point(6, 6);
 			this.Btvoltar2.Name = "Btvoltar2";
 			this.Btvoltar2.Size = new System.Drawing.Size(98, 37);
 			this.Btvoltar2.TabIndex = 3;
@@ -238,10 +238,10 @@ namespace ServerCloud
 			// 
 			this.PagePastas.Controls.Add(this.PnPastas);
 			this.PagePastas.Controls.Add(this.BtVoltar);
-			this.PagePastas.Location = new System.Drawing.Point(4, 24);
+			this.PagePastas.Location = new System.Drawing.Point(4, 25);
 			this.PagePastas.Name = "PagePastas";
 			this.PagePastas.Padding = new System.Windows.Forms.Padding(3);
-			this.PagePastas.Size = new System.Drawing.Size(781, 490);
+			this.PagePastas.Size = new System.Drawing.Size(781, 489);
 			this.PagePastas.TabIndex = 1;
 			this.PagePastas.Text = "tabPage2";
 			this.PagePastas.UseVisualStyleBackColor = true;
@@ -253,7 +253,7 @@ namespace ServerCloud
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.PnPastas.Location = new System.Drawing.Point(6, 49);
 			this.PnPastas.Name = "PnPastas";
-			this.PnPastas.Size = new System.Drawing.Size(773, 405);
+			this.PnPastas.Size = new System.Drawing.Size(773, 404);
 			this.PnPastas.TabIndex = 2;
 			// 
 			// BtVoltar

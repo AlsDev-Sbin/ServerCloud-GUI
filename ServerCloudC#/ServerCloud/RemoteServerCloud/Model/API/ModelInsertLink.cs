@@ -7,6 +7,6 @@
 		public string FileName { get; set; }
 		public string bytes { get; set; }
 		public string str_bytes { get; set; }
-		public int IdPath { get; set; }
+		public int? IdPath { get; set; }
 	}
 }

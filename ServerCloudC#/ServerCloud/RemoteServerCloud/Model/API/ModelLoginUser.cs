@@ -7,5 +7,6 @@
 		public string PSW { get; set; }
 		public string PrimaryName { get; set; }
 		public string SecondName { get; set; }
+		public string Token { get; set; }
 	}
 }

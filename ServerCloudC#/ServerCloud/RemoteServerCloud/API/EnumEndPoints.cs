@@ -27,6 +27,12 @@
 			UpdateUser
 
 			#endregion
+
+			#region DELETE
+				DeletePath,
+				DeleteUser,
+				DeleteLink
+			#endregion
 		}
 
 		public static string GetEndPoint(EndPoint endPoint) => $"ServerCloud/{endPoint}.php";

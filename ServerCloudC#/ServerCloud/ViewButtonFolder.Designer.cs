@@ -31,7 +31,9 @@ namespace ServerCloud
 		{
 			this.Pic = new System.Windows.Forms.PictureBox();
 			this.LbCaptionFolder = new System.Windows.Forms.Label();
+			this.PicExcluir = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.Pic)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PicExcluir)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Pic
@@ -63,10 +65,24 @@ namespace ServerCloud
 			this.LbCaptionFolder.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			this.LbCaptionFolder.DoubleClick += new System.EventHandler(this.Click);
 			// 
+			// PicExcluir
+			// 
+			this.PicExcluir.BackColor = System.Drawing.Color.Transparent;
+			this.PicExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PicExcluir.Image = global::ServerCloud.Properties.Resources.trash_64px;
+			this.PicExcluir.Location = new System.Drawing.Point(-4, -3);
+			this.PicExcluir.Name = "PicExcluir";
+			this.PicExcluir.Size = new System.Drawing.Size(17, 20);
+			this.PicExcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.PicExcluir.TabIndex = 2;
+			this.PicExcluir.TabStop = false;
+			this.PicExcluir.Click += new System.EventHandler(this.PicExcluir_Click);
+			// 
 			// ViewButtonFolder
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.PicExcluir);
 			this.Controls.Add(this.LbCaptionFolder);
 			this.Controls.Add(this.Pic);
 			this.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -74,6 +90,7 @@ namespace ServerCloud
 			this.Size = new System.Drawing.Size(107, 121);
 			this.DoubleClick += new System.EventHandler(this.Click);
 			((System.ComponentModel.ISupportInitialize)(this.Pic)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PicExcluir)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -82,5 +99,6 @@ namespace ServerCloud
 
 		private System.Windows.Forms.PictureBox Pic;
 		public System.Windows.Forms.Label LbCaptionFolder;
+		private System.Windows.Forms.PictureBox PicExcluir;
 	}
 }

@@ -3,7 +3,7 @@
 	public class ModelSelectLink
 	{
 		public int IdUser { get; set; }
-		public int IdPath { get; set; }
+		public int? IdPath { get; set; }
 		public string Method { get; set; }
 		public int Id { get; set; }
 		public string IdLink { get; set; }

@@ -39,8 +39,10 @@ namespace ServerCloud
 			this.pn1 = new System.Windows.Forms.Panel();
 			this.pnDivider = new System.Windows.Forms.Panel();
 			this.ProgressBar = new System.Windows.Forms.ProgressBar();
+			this.PicExcluir = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.Pic)).BeginInit();
 			this.pn1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PicExcluir)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Pic
@@ -137,10 +139,22 @@ namespace ServerCloud
 			this.ProgressBar.Value = 100;
 			this.ProgressBar.Visible = false;
 			// 
+			// PicExcluir
+			// 
+			this.PicExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.PicExcluir.Image = global::ServerCloud.Properties.Resources.trash_64px;
+			this.PicExcluir.Location = new System.Drawing.Point(-4, -3);
+			this.PicExcluir.Name = "PicExcluir";
+			this.PicExcluir.Size = new System.Drawing.Size(17, 20);
+			this.PicExcluir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.PicExcluir.TabIndex = 7;
+			this.PicExcluir.TabStop = false;
+			// 
 			// ViewButtonFile
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.PicExcluir);
 			this.Controls.Add(this.ProgressBar);
 			this.Controls.Add(this.pnDivider);
 			this.Controls.Add(this.pn1);
@@ -153,6 +167,7 @@ namespace ServerCloud
 			this.DoubleClick += new System.EventHandler(this.Click);
 			((System.ComponentModel.ISupportInitialize)(this.Pic)).EndInit();
 			this.pn1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.PicExcluir)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -167,5 +182,6 @@ namespace ServerCloud
 		private System.Windows.Forms.Panel pn1;
 		private System.Windows.Forms.Panel pnDivider;
 		public System.Windows.Forms.ProgressBar ProgressBar;
+		private System.Windows.Forms.PictureBox PicExcluir;
 	}
 }

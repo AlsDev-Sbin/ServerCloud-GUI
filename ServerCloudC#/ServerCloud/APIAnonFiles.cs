@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using ServerCloud.RemoteServerCloud.Model;
 using System;
 using System.Linq;
@@ -93,8 +94,6 @@ namespace ServerCloud
 							bt.InvokeMember("Click");
 
 							web.Tag = 1;
-							//DeleteUrlCacheEntry("https://anonfiles.com");
-							//SuppressWininetBehavior();
 							web.Navigate("https://anonfiles.com/docs/api");
 							web.Refresh(WebBrowserRefreshOption.Completely);
 						} else if (web.Tag.Equals(1))
@@ -141,22 +140,112 @@ namespace ServerCloud
 				var web = new HtmlWeb();
 				var doc = web.Load(link);
 				var tag_download = doc.GetElementbyId("download-url");
-				var download_link = tag_download.GetAttributeValue("href", "");
+				if (tag_download is not null)
+				{
+					var download_link = tag_download.GetAttributeValue("href", "");
 
-				var webDownload = new WebClient();
-				webDownload.DownloadFile(download_link, FileName);
+					var webDownload = new WebClient();
+					webDownload.DownloadFile(download_link, FileName);
+				}
 
 				if (callback is not null)
 					callback();
 			});
 		}
 
+		public CrawlerDeleteFile DeleteFiles() =>
+			new CrawlerDeleteFile();
+
+		public class CrawlerDeleteFile : IDisposable
+		{
+			WebBrowser? web { get; init; }
+			private (string User, string Pass) DataUser { get; set; }
+
+			public CrawlerDeleteFile()
+			{
+				DeleteUrlCacheEntry("https://anonfiles.com");
+				web = new WebBrowser();
+				web.Tag = 0;
+				web.ScriptErrorsSuppressed = true;
+				web.DocumentCompleted += (s, e) => DocumentCompleted();
+				SuppressWininetBehavior();
+			}
+
+			public void Initialize(string User, string Pass)
+			{
+				DataUser = (User, Pass);
+
+				web.Navigate("https://anonfiles.com/login");
+				web.Refresh(WebBrowserRefreshOption.Completely);
+			}
+
+			private async void DocumentCompleted()
+			{
+				web.Document.Window.Error += (s, e) => e.Handled = true;
+
+				if (web.Tag.Equals(0))
+				{
+					var inputUser = web.Document.All.GetElementsByName("username").OfType<HtmlElement>().First();
+					var inputPass = web.Document.All.GetElementsByName("password").OfType<HtmlElement>().First();
+					var bt = web.Document.GetElementsByTagName("input").OfType<HtmlElement>().Last();
+
+					inputUser.SetAttribute("value", DataUser.User);
+					inputPass.SetAttribute("value", DataUser.Pass);
+
+					bt.InvokeMember("Click");
+
+					web.Tag = 1;
+				} else if (web.Tag.Equals(1))
+				{
+					await Task.Delay(500);
+					var bt = web.Document.GetElementsByTagName("button").OfType<HtmlElement>().Last();
+					bt.InvokeMember("Click");
+
+					web.Tag = 2;
+				}
+			}
+
+			public async Task<bool> DeleteFile(string link)
+			{
+				return await Task.Run(() =>
+				{
+					int i = 0;
+					while ((int)web.Tag == 0)
+					{
+						Task.Delay(80);
+						i++;
+						if (i >= 5000)
+							return false;
+					}
+
+					web.Navigate($"https://anonfiles.com/account/file/{link}/remove");
+
+					i = 0;
+					while ((int)web.Tag != 2)
+					{
+						Task.Delay(80);
+						i++;
+						if (i >= 5000)
+							return false;
+					}
+
+					web.Tag = 1;
+					return true;
+				});
+			}
+
+			public void Dispose()
+			{
+
+				GC.SuppressFinalize(this);
+			}
+		}
 
 		[DllImport("wininet.dll", SetLastError = false)]
 		private static extern long DeleteUrlCacheEntry(string lpszUrlName);
 
-		[DllImport("wininet.dll", CharSet = CharSet.Auto, SetLastError = true)]
-		public static extern bool InternetSetOption(int hInternet, int dwOption, IntPtr lpBuffer, int dwBufferLength);
+		[DllImport("wininet.dll", CharSet = CharSet.Auto, SetLastError = false)]
+		private static extern bool InternetSetOption(int hInternet, int dwOption, IntPtr lpBuffer, int dwBufferLength);
 
 		private static unsafe void SuppressWininetBehavior()
 		{

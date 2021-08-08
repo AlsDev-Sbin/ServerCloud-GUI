@@ -14,8 +14,8 @@ namespace ServerCloud
 		{
 			InitializeComponent();
 
-			TxUsuario.Text = "AlsDev";
-			TxSenha.Text = "123456";
+			TxUsuario.Text = "teste_ola";
+			TxSenha.Text = "ola.4321";
 		}
 
 		private async void BtEntrar_Click(object sender, EventArgs e)

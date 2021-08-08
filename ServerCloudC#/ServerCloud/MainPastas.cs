@@ -12,7 +12,7 @@ namespace ServerCloud
 {
 	public partial class MainPastas : UserControl
 	{
-		private ModelLoginUser User { get; set; }
+		public static ModelLoginUser User { get; set; }
 		private List<ModelSelectPath> Paths { get; set; }
 		private List<ModelSelectLink> Links { get; set; }
 		private List<(string FileName, bool Concluded)> CurrentDownloadLinks { get; set; }
@@ -173,6 +173,7 @@ namespace ServerCloud
 			FlowContainerFolders.Controls.Clear();
 			CurrentPath = ("", 0, CurrentPath.Parent);
 			AbrirPasta(IdPath);
+
 			await ListLinks();
 
 			AbrirArquivo();
@@ -231,6 +232,7 @@ namespace ServerCloud
 				AbrirPasta(CurrentPath.Parent);
 
 				await ListLinks();
+
 				AbrirArquivo();
 			}
 		}
@@ -241,6 +243,7 @@ namespace ServerCloud
 				CurrentDownloadLinks = new();
 
 			var list = new List<ModelInsertLink>();
+			var CurrentIdPath = CurrentPath.IdPath;
 
 			var openFile = new OpenFileDialog()
 			{
@@ -290,7 +293,7 @@ namespace ServerCloud
 							bytes = modelApi.data.file.metadata.size.bytes.ToString(),
 							str_bytes = modelApi.data.file.metadata.size.readable,
 							FileName = FileName,
-							IdPath = CurrentPath.IdPath,
+							IdPath = CurrentIdPath,
 							IdUser = User.IdUser,
 							IdLink = $"{modelApi.data.file.metadata.id}/{FileName}"
 						};
@@ -337,6 +340,7 @@ namespace ServerCloud
 				PnListDownloads.Visible = true;
 			}
 		}
+
 		private void BtLimparListaDownload_Click(object sender, EventArgs e)
 		{
 			ListDownloads.Items.Clear();

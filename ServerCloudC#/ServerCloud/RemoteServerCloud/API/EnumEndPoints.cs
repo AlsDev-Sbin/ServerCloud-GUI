@@ -24,7 +24,7 @@
 
 			UpdatePath,
 			UpdateLink,
-			UpdateUser
+			UpdateUser,
 
 			#endregion
 

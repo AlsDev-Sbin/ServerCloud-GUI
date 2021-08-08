@@ -25,9 +25,11 @@ namespace ServerCloud.RemoteServerCloud.Model
 
 	public class paths
 	{
-		public int Id { get; set; }
+		public int? Id { get; set; }
 		public string? Path { get; set; }
 		public int? Parent { get; set; }
+		public bool paths_deleted { get; set; }
+		public bool files_deleted { get; set; }
 	}
 
 	public class user

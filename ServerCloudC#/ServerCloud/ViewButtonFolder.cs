@@ -38,9 +38,8 @@ namespace ServerCloud
 
 				using (var api = new APIAnonFiles())
 				{
-					using (var delete = api.DeleteFiles())
+					using (var delete = api.DeleteFiles(MainPastas.User.UserName, MainPastas.User.PSW))
 					{
-						delete.Initialize(MainPastas.User.UserName, MainPastas.User.PSW);
 						foreach (var data in resp.data)
 						{
 							if (data is null || data.links is null || data.links.Count == 0)

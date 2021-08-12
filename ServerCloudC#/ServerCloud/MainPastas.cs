@@ -38,47 +38,53 @@ namespace ServerCloud
 
 		protected async void AbrirArquivo()
 		{
-			Links.Where(l => l.IdPath == CurrentPath.IdPath).ToList().ForEach(link =>
+			await Task.Run(() =>
 			{
-				var panel = new ViewButtonFile(link.Id, ClickDownloadFile);
-				panel.LbCaptionFile.Text = link.FileName;
-				panel.LbBytes.Text = link.str_bytes;
+				Links.Where(l => l.IdPath == CurrentPath.IdPath).ToList().ForEach(link =>
+				{
+					var panel = new ViewButtonFile(link.Id, ClickDownloadFile);
+					panel.LbCaptionFile.Text = link.FileName;
+					panel.LbBytes.Text = link.str_bytes;
 
-				FlowContainerFolders.Controls.Add(panel);
+					FlowContainerFolders.Invoke(() => FlowContainerFolders.Controls.Add(panel));
+				});
 			});
 		}
 
 		private async void AbrirPasta(int? IdPath = null)
 		{
-			if (Paths.Count > 1)
+			await Task.Run(() =>
 			{
-				var Parent = CurrentPath.Parent;
-				var PathsFilter = IdPath is null ?
-					Paths.OrderBy(p => p.IdPath).ToList() :
-					Paths.OrderBy(p => p.IdPath).Where(p => p.Parent == (int)IdPath || p.IdPath == (int)IdPath).ToList();
-
-				foreach (var path in PathsFilter)
+				if (Paths.Count > 1)
 				{
-					if (CurrentPath.IdPath == 0)
-						CurrentPath = (path.Path, path.IdPath, IdPath is null ? Parent : path.Parent);
-					else
-					{
-						var PathsLevel = from p in Paths where p.Parent == CurrentPath.IdPath select p;
+					var Parent = CurrentPath.Parent;
+					var PathsFilter = IdPath is null ?
+						Paths.OrderBy(p => p.IdPath).ToList() :
+						Paths.OrderBy(p => p.IdPath).Where(p => p.Parent == (int)IdPath || p.IdPath == (int)IdPath).ToList();
 
-						if (PathsLevel != null)
+					foreach (var path in PathsFilter)
+					{
+						if (CurrentPath.IdPath == 0)
+							CurrentPath = (path.Path, path.IdPath, IdPath is null ? Parent : path.Parent);
+						else
 						{
-							foreach (var pathLevel in PathsLevel)
+							var PathsLevel = from p in Paths where p.Parent == CurrentPath.IdPath select p;
+
+							if (PathsLevel != null)
 							{
-								var bt = new ViewButtonFolder(pathLevel.IdPath, ClickFolder);
-								bt.LbCaptionFolder.Text = pathLevel.Path;
-								FlowContainerFolders.Controls.Add(bt);
+								foreach (var pathLevel in PathsLevel)
+								{
+									var bt = new ViewButtonFolder(pathLevel.IdPath, ClickFolder);
+									bt.LbCaptionFolder.Text = pathLevel.Path;
+									FlowContainerFolders.Invoke(() => FlowContainerFolders.Controls.Add(bt));
+								}
+								break;
 							}
-							break;
 						}
 					}
-				}
-			} else
-				CurrentPath = (Paths.First().Path, Paths.First().IdPath, 0);
+				} else
+					CurrentPath = (Paths.First().Path, Paths.First().IdPath, 0);
+			});
 		}
 
 		protected async Task ListLinks()
@@ -126,6 +132,7 @@ namespace ServerCloud
 				var resp = await req.RequestServerCloud(model);
 				if (resp != null || resp.InformationRequest.ValueError == 200)
 				{
+					Paths.Clear();
 					Paths.AddRange(
 						from path in resp.data.First().paths
 						select new ModelSelectPath
@@ -172,10 +179,12 @@ namespace ServerCloud
 		{
 			FlowContainerFolders.Controls.Clear();
 			CurrentPath = ("", 0, CurrentPath.Parent);
+
+
+			await ListFolders();
 			AbrirPasta(IdPath);
 
 			await ListLinks();
-
 			AbrirArquivo();
 		}
 

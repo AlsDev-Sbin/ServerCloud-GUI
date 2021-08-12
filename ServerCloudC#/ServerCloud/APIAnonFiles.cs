@@ -153,27 +153,24 @@ namespace ServerCloud
 			});
 		}
 
-		public CrawlerDeleteFile DeleteFiles() =>
-			new CrawlerDeleteFile();
+		public CrawlerDeleteFile DeleteFiles(string user, string pass) =>
+			new CrawlerDeleteFile(user, pass);
 
 		public class CrawlerDeleteFile : IDisposable
 		{
 			WebBrowser? web { get; init; }
 			private (string User, string Pass) DataUser { get; set; }
 
-			public CrawlerDeleteFile()
+			public CrawlerDeleteFile(string user, string pass)
 			{
+				DataUser = (user, pass);
+
 				DeleteUrlCacheEntry("https://anonfiles.com");
 				web = new WebBrowser();
 				web.Tag = 0;
 				web.ScriptErrorsSuppressed = true;
 				web.DocumentCompleted += (s, e) => DocumentCompleted();
 				SuppressWininetBehavior();
-			}
-
-			public void Initialize(string User, string Pass)
-			{
-				DataUser = (User, Pass);
 
 				web.Navigate("https://anonfiles.com/login");
 				web.Refresh(WebBrowserRefreshOption.Completely);
@@ -202,7 +199,8 @@ namespace ServerCloud
 					bt.InvokeMember("Click");
 
 					web.Tag = 2;
-				}
+				} else if (web.Tag.Equals(2))
+					web.Tag = 1;
 			}
 
 			public async Task<bool> DeleteFile(string link)
@@ -229,16 +227,13 @@ namespace ServerCloud
 							return false;
 					}
 
-					web.Tag = 1;
+					web.Navigate($"https://anonfiles.com/");
 					return true;
 				});
 			}
 
-			public void Dispose()
-			{
-
+			public void Dispose() =>
 				GC.SuppressFinalize(this);
-			}
 		}
 
 		[DllImport("wininet.dll", SetLastError = false)]
